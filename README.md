@@ -1,3 +1,4 @@
+Profesor
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,3 +47,80 @@ namespace alumno_y_profe
         }
     }
 }
+
+Alumno
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace alumno_y_profe
+{
+    internal class Alumno
+    {
+        private int nl;
+        private string nombre_alumno;
+        private ArrayList materias = new ArrayList();
+        private ArrayList calificaciones = new ArrayList();
+
+        public int Nl { get => nl; set => nl = value; }
+        public string Nombre_Alumno { get => nombre_alumno; set => nombre_alumno = value; }
+        public ArrayList Materias { get => materias; set => materias = value; }
+        public ArrayList Calificaciones { get => calificaciones; set => calificaciones = value; }
+        public Alumno()
+        {
+            Materias = new ArrayList();
+            Calificaciones = new ArrayList();
+        }
+        public void agregarMaterias(string materia)
+        {
+            materias.Add(materia);
+        }
+        public void agregarCalificación(int calificación)
+        {
+            calificaciones.Add(calificación);
+        }
+    }
+}
+
+
+Principal
+using alumno_y_profe;
+Profesor profesor = new Profesor();
+Console.WriteLine("\nDatos del Profe:");
+Console.WriteLine("Ingresa el Nombre del profesor");
+profesor.Nombre_profesor = Console.ReadLine();
+
+profesor.capturar_Datos_Alumno();
+profesor.capturar_Materias();
+profesor.capturar_Calificaciones();
+
+Console.WriteLine($"El nombre del profesor es {profesor.Nombre_profesor}");
+Console.WriteLine($"El Nombre de el alumno es{profesor.Alumno.Nombre_Alumno}");
+
+Console.WriteLine("Materias:");
+foreach (string materia in profesor.Alumno.Materias)
+{
+    Console.WriteLine($"- {materia}");
+}
+
+Console.WriteLine("Calificaciones");
+foreach (int calificaciones in profesor.Alumno.Calificaciones)
+{
+    Console.WriteLine($"-{calificaciones}");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
